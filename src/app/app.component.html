@@ -1,9 +1,9 @@
 <ul>
-  <p> Il y'a  {{compteur}} tâche terminées</p>
+  <p>Il y'a {{ compteur }} tâche terminées</p>
   <!-- <app-task [name]="name1" (livreurbooleen)="cherchermessage($event)" [complete]  =  "complete1" ></app-task>
   <app-task [name]="name2" (livreurbooleen)="cherchermessage($event)" [complete]  =  "complete2" ></app-task>
   <app-task [name]="name3" (livreurbooleen)="cherchermessage($event)" [complete] =  "complete3" ></app-task> -->
- <!-- code a la main  -->
+  <!-- code a la main  -->
 
   <!-- <p>
     Afficher le commande {{ taskslist[0].id}} {{ taskslist[0].title }} {{ taskslist[0].completed }} {{ taskslist[0].description }} <br>
@@ -18,20 +18,20 @@
 
     Afficher le commande {{ taskslist[5].id }} {{ taskslist[5].title }} {{ taskslist[5].completed }} {{ taskslist[5].description }} <br>
     </p> -->
-
 </ul>
 
+<!-- condition d'affichage de la liste -->
+<p *ngIf="taskslist.length> 0; else elseBlock"> liste s'affiche </p>
+<ng-template #elseBlock>la liste ne s'affiche pas</ng-template>
 
-  <!-- code avce *ngFor="let item of list" La directive structurelle ngFor permet de boucler sur un array et d'injecter les éléments dans le DOM. -->
 
+<!-- code avce *ngFor="let item of list" La directive structurelle ngFor permet de boucler sur un array et d'injecter les éléments dans le DOM. -->
 <ul>
-  <!-- trackByFunction permet d'aller chercher seulement ce qui a changé dans la liste et l'afficher toujours le mettre avant la liste -->
-  <app-task *ngFor=" let task of taskslist; trackBy:trackByFunction"
-  (livreurbooleen)="cherchermessage($event)"
-  [task]="task"></app-task>
+<!-- trackByFunction permet d'aller chercher seulement ce qui a changé dans la liste et l'afficher toujours le mettre avant la liste -->
+<app-task *ngFor=" let task of taskslist; trackBy:trackByFunction"
+(livreurbooleen)="cherchermessage($event)"
+[task]="task">
+</app-task>
 </ul>
-
-
-
 
 

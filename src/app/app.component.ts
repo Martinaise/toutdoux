@@ -13,7 +13,7 @@ export class AppComponent {
   public taskslist: Tasks[];
 
   constructor() {
-    
+
     this.taskslist = [
       new Tasks(1, 'robe', true, 'livrer'),
       new Tasks(2, 'ordinateur', false, 'retourner'),
@@ -22,6 +22,8 @@ export class AppComponent {
       new Tasks(5, 'livre', true, 'arriver'),
       new Tasks(6, 'vêtement', false, 'retirer'),
     ];
+    // Pour afficher le compteur et les éléménts du tableau.
+    // filter parcours tout le tableau et envois dans le code les valeurs true à l'aide du boolean
     this.compteur = this.taskslist.filter((task) => task.completed).length;
   }
 
@@ -37,3 +39,4 @@ export class AppComponent {
     return item.id;
   }
 }
+

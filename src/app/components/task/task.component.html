@@ -5,9 +5,13 @@
 
   <input placeholder="Donnez le nom de la tache ici" [(ngModel)]="task.title" />
   <br />
-  la tâche {{ task.title }} est
+  le produit reservé est {{ task.title }}
   <span [class]="getBadgeVariant()">{{ getComplete() }}</span>
 </li>
 
 
+ <!-- ngIf : Afficher de manière conditionnelle la liste si elle existe, ou un message indiquant qu’il n’y a pas de tâches pour le moment.
+ ngSwitch : Afficher le % de complétion de la liste de tâche et un petit message personnalisé.
+ Un pour 0%, pour 1 a 50%, pour 51 a 99% et pour 100%.
 
+ -->
