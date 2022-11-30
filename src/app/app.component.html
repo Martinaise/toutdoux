@@ -1,3 +1,9 @@
+<!-- AIDE -->
+<!-- {{}} pour l’interpolation
+[] pour le binding de propriété
+() pour le binding d’événement
+# pour la déclaration de variable * pour les directives structurelles -->
+
 <ul>
   <p>Il y'a {{ compteur }} tâche terminées</p>
   <!-- <app-task [name]="name1" (livreurbooleen)="cherchermessage($event)" [complete]  =  "complete1" ></app-task>
@@ -19,19 +25,35 @@
     Afficher le commande {{ taskslist[5].id }} {{ taskslist[5].title }} {{ taskslist[5].completed }} {{ taskslist[5].description }} <br>
     </p> -->
 </ul>
-
-<!-- condition d'affichage de la liste -->
-<p *ngIf="taskslist.length> 0; else elseBlock"> liste s'affiche </p>
-<ng-template #elseBlock>la liste ne s'affiche pas</ng-template>
-
-
-<!-- code avce *ngFor="let item of list" La directive structurelle ngFor permet de boucler sur un array et d'injecter les éléments dans le DOM. -->
 <ul>
-<!-- trackByFunction permet d'aller chercher seulement ce qui a changé dans la liste et l'afficher toujours le mettre avant la liste -->
-<app-task *ngFor=" let task of taskslist; trackBy:trackByFunction"
-(livreurbooleen)="cherchermessage($event)"
-[task]="task">
-</app-task>
+  <!-- condition d'affichage de la liste -->
+  <!-- remarque: pour ne plus afficher la liste remplacer >0  parc =0  -->
+  <p *ngIf="taskslist.length > 0; else elseBlock">
+    La liste de mes commandes
+
+    <!-- code avce *ngFor="let item of list" La directive structurelle ngFor permet de boucler sur un array et d'injecter les éléments dans le DOM. -->
+
+    <!-- trackByFunction permet d'aller chercher seulement ce qui a changé dans la liste et l'afficher toujours le mettre avant la liste -->
+    <app-task
+      *ngFor="let task of taskslist; trackBy: trackByFunction"
+      (livreurbooleen)="cherchermessage($event)"
+      [task]="task"
+    >
+    </app-task>
+  </p>
+  <ng-template #elseBlock>Je vien d'enlever la liste</ng-template>
 </ul>
+<!-- Pipe | suivie du type et de ce qu'on lui demande ici on demande de maitre 2 chiffre apès la virgule
+le pourcentega des taches en cours est de -->
+{{ calulepourcentage() | number: "1.0-2" }}
 
-
+<!-- <div [ngSwitch]="taskslist">
+  <p *ngSwitchCase="1"> je suis le 1er pourcentage</p>
+  <p *ngSwitchCase="2">je suis le 2eme pourcentag</p>
+  <p *ngSwitchCase="3"> je suis le 3eme pourcentage</p>
+  <p *ngSwitchCase="4">je suis le 4 eme pourcentag</p>
+  <p *ngSwitchCase="5"> je suis le 5 eme pourcentage</p>
+  <p *ngSwitchCase="6">je suis le 6 eme pourcentag</p>
+  <p *ngSwitchDefault> NOT Found LIST </p>
+  </div>
+ -->

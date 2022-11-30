@@ -1,5 +1,6 @@
 import { Tasks } from './classes/tasks.model';
 import { Component } from '@angular/core';
+import { formatPercent } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +22,13 @@ export class AppComponent {
       new Tasks(4, 'cadeau', false, 'reçu'),
       new Tasks(5, 'livre', true, 'arriver'),
       new Tasks(6, 'vêtement', false, 'retirer'),
+      new Tasks(6, 'voiture', true, 'en cours de livraison'),
+
     ];
     // Pour afficher le compteur et les éléménts du tableau.
     // filter parcours tout le tableau et envois dans le code les valeurs true à l'aide du boolean
     this.compteur = this.taskslist.filter((task) => task.completed).length;
+
   }
 
   cherchermessage(childcomplete: boolean): void {
@@ -34,9 +38,26 @@ export class AppComponent {
       this.compteur--;
     }
   }
-  // utilisation de track by qui permet de signalet tout changement (suprimer,)toujours le maitere
+  // utilisation de track by qui permet de signalet tout changement (suprimer,ajoux...)toujours le maitere
   trackByFunction(index: number, item: any): string {
     return item.id;
   }
+
+calulepourcentage() :number{
+  // resultat est le 100%
+  // la longeuer des tâches en cours
+  let tabtacheencours =this.taskslist.filter(task=>!task.completed);
+  let resultat = tabtacheencours.length /this.taskslist.length
+  return resultat *100
+
 }
+
+
+
+}
+
+//  affichage de pourcentage
+
+// formatPercent(value: number, locale: string, digitsInfo?: string )
+//   )
 

@@ -1,4 +1,4 @@
-import { Tasks } from './../../classes/tasks.model';
+ import { Tasks } from './../../classes/tasks.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
